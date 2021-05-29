@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html class="ie ie7"><![endif]-->
+<!--[if IE 8]><html class="ie ie8"><![endif]-->
+<!--[if IE 9]><html class="ie ie9"><![endif]-->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link href="apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="favicon.png" rel="icon">
+  <meta name="author" content="#{author}">
+  <meta name="keywords" content="#{keyword}">
+  <meta name="description" content="#{description}">
+  <title>Bakery | Petite Treats Email</title>
+  <!-- Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700%7CPacifico%7CVarela+Round%7CPoppins" rel="stylesheet">
+  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+  <link rel="stylesheet" href="plugins/ps-icon/ps-icon.css">
+  <!-- CSS Library-->
+  <link rel="stylesheet" href="plugins/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/owl-carousel/assets/owl.carousel.css">
+  <link rel="stylesheet" href="plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+  <link rel="stylesheet" href="plugins/Magnific-Popup/dist/magnific-popup.css">
+  <link rel="stylesheet" href="plugins/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="plugins/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="plugins/slick/slick/slick.css">
+  <link rel="stylesheet" href="plugins/revolution/css/settings.css">
+  <link rel="stylesheet" href="plugins/revolution/css/layers.css">
+  <link rel="stylesheet" href="plugins/revolution/css/navigation.css">
+  <!-- Custom-->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <!--导入布局js，共享header和footer-->
+  <script type="text/javascript" src="js/include.js"></script>
+  <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+  <!--WARNING: Respond.js doesn't work if you view the page via file://-->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+  <script>
+    $(function (){
+      var username="";
+      var address="";
+      var birthday="";
+      var phone="";
+      var email="";
+      var interests="";
+      function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+          var str = url.substr(1);
+        //  alert(str);
+          strs = str.split("&");
+         // alert(strs)
+          for(var i = 0; i < strs.length; i ++) {
+            if(strs[i].split("=")[0]=="bakery"){
+              interests+=unescape(strs[i].split("=")[1]);
+              interests+=" ";
+            }
+            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+           // alert(theRequest["username"])
+          }
+        }
+        return theRequest;
+      }
+      var Request = new Object();
+      Request = GetRequest();
+      username=Request["username"];
+      address=Request["address"];
+      birthday=Request["birthday"];
+      birthdays=birthday.split("/");
+      birthday=birthdays[1]+"/"+birthdays[2];
+     // alert(birthday)
+      phone=Request["phone"];
+      email=Request["email"];
+      //interests=
+      //alert(username);
+      $("#username").val(username).attr("readonly",'readonly');
+      $("#address").val(address).attr("readonly",'readonly');
+      $("#birthday").val(birthday).attr("readonly",'readonly');
+      $("#phone").val(phone).attr("readonly",'readonly');
+      $("#email").val(email).attr("readonly",'readonly');
+     // alert(interests);
+      $("#interests").val(interests).attr("readonly",'readonly');
+    });
+  </script>
+</head>
+<!--[if IE 7]><body class="ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 8]><body class="ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 9]><body class="ie9 lt-ie10"><![endif]-->
+
+<body class="page-init">
+
+<div id="header"></div>
+<div id="back2top"><i class="fa fa-angle-up"></i></div>
+<div class="loader"></div>
+<div class="page-wrap">
+  <!-- Heros-->
+  <div class="ps-section--hero"><img src="images/background/img-404.jpg" alt=""style="height: 400px">
+    <div class="ps-section__content text-center">
+      <div class="ps-error bg--cover" >
+        <div class="ps-error__content text-center">
+          <p>Welcome</p><a class="ps-btn" href="index.html">Back to home<i class="fa fa-angle-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="ps-section ps-section--order-form pt-80 pb-80">
+      <div class="container">
+        <div class="ps-section__header text-center mb-50">
+          <div class="ps-section__top">Thank you for signing up for the Petite Treats Weekly newsletter.</div>
+          <h3 class="ps-section__title ps-section__title--full">We have added the following information to our files regarding your interests</h3>
+        </div>
+        <div class="ps-section__content">
+
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+                  <label>Your Name</label>
+                  <input id="username" class="form-control" type="text" name="username" placeholder="" >
+                </div>
+                <div class="form-group">
+                  <label>Your Adress </label>
+                  <input id="address" class="form-control" type="text" name="address" placeholder="" >
+                </div>
+                <div class="form-group">
+                  <label>Birthday</label>
+                    <input id="birthday" class="form-control " type="text" name="birthday"  placeholder="">
+                </div>
+
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                <div class="form-group">
+                  <label>Number Phone</label>
+                  <input id="phone" class="form-control" type="text" name="phone" placeholder="" >
+                </div>
+                <div class="form-group">
+                  <label>Your Email </label>
+                  <input id="email" class="form-control" name="email" type="text" placeholder="" >
+                </div>
+                <div class="form-group form-group--icon">
+                  <label>Product interests</label>
+                    <input id="interests" class="form-control " type="text" placeholder="">
+                </div>
+
+              </div>
+
+             <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                <div class="form-group mb-20">
+                  <label>Notes about your order, e.g. special notes for delivery.</label>
+                  <textarea class="form-control" rows="6"></textarea>
+                </div>
+                <div class="form-group text-center">
+                  <button class="ps-btn">Order Bakery Now<i class="fa fa-angle-right"></i></button>
+                </div>
+              </div>-->
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="footer"></div>
+<!-- JS Library-->
+<script type="text/javascript" src="plugins/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="plugins/overflow-text.js"></script>
+<script type="text/javascript" src="plugins/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="plugins/imagesloaded.pkgd.js"></script>
+<script type="text/javascript" src="plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+<script type="text/javascript" src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script type="text/javascript" src="plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="plugins/moment.js"></script>
+<script type="text/javascript" src="plugins/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="plugins/slick/slick/slick.min.js"></script>
+<script type="text/javascript" src="plugins/skrollr.min.js"></script>
+<script type="text/javascript" src="plugins/gmap3.min.js"></script>
+<script type="text/javascript" src="http://ditu.google.cn/maps/api/js?key=AIzaSyAx39JFH5nhxze1ZydH-Kl8xXM3OK4fvcg&amp;region=GB"></script>
+<!-- Revolution - slider-->
+<script type="text/javascript" src="plugins/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="plugins/revolution/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
+<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+<script type="text/javascript" src="plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+<!-- Custom scripts-->
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
